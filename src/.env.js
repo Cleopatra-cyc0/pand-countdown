@@ -1,5 +1,5 @@
-const date = new Date()
-date.setFullYear(2021, 5, 5)
-date.setHours(6)
+// new Date(year, monthIndex, day, hours, minutes, seconds, milliseconds)
+
+const date = new Date(2021, 5, 5, 6, 0, 0, 0)
 
 export default date
