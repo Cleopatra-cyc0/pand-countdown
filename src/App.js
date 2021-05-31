@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css"
+import CountDown from "./components/CountDown"
+import date from "./.env.js"
+import logo from "./cleo-logo.svg"
 
 function App() {
+  console.log(date)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <img
+        src={logo}
+        style={{ width: "30vw", margin: "0 auto", alignSelf: "start" }}
+      />
+      <CountDown toDate={date} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
