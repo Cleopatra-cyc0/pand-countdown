@@ -7,11 +7,7 @@ function App() {
   console.log(date)
   return (
     <div className="App">
-      <img
-        src={logo}
-        style={{ width: "30vw", margin: "0 auto", alignSelf: "start" }}
-        alt="Cleopatra"
-      />
+      <img src={logo} alt="Cleopatra" />
       <CountDown toDate={date} />
     </div>
   )

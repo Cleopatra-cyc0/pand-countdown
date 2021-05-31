@@ -9,3 +9,15 @@
 
   background-color: #fac905;
 }
+
+img {
+  width: 70vw;
+  margin: 0 auto;
+  align-self: start;
+}
+
+@media only screen and (min-width: 600px) {
+  img {
+    width: 40vw;
+  }
+}
