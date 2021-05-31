@@ -10,6 +10,7 @@ function App() {
       <img
         src={logo}
         style={{ width: "30vw", margin: "0 auto", alignSelf: "start" }}
+        alt="Cleopatra"
       />
       <CountDown toDate={date} />
     </div>
