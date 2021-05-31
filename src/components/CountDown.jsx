@@ -1,10 +1,14 @@
 import { useEffect, useRef, useState } from "react"
 
-const formatDate = (days, hours, minutes, seconds) =>
-  `${days} dagen en ${hours}:${minutes}:${seconds}`
+const formatTime = (hours, minutes, seconds) => `${hours}:${minutes}:${seconds}`
 
 const CountDown = ({ toDate }) => {
-  const [dateString, setDateString] = useState("")
+  const [dateDiff, setDateDiff] = useState({
+    days: null,
+    hours: null,
+    minutes: null,
+    seconds: null,
+  })
 
   const interval = useRef()
   useEffect(() => {
@@ -25,14 +29,25 @@ const CountDown = ({ toDate }) => {
       )
       const seconds = Math.floor((distance % (1000 * 60)) / 1000)
 
-      setDateString(formatDate(days, hours, minutes, seconds))
+      setDateDiff({
+        days,
+        hours,
+        minutes,
+        seconds,
+      })
     })
 
     return () => {
       clearInterval(interval.current)
     }
   })
-  return <h1>Nog {dateString} dagen totdat we open mogen!</h1>
+  return (
+    <h1>
+      Nog {dateDiff.days} dagen en{" "}
+      {formatTime(dateDiff.hours, dateDiff.minutes, dateDiff.seconds)} totdat we
+      open mogen!
+    </h1>
+  )
 }
 
 export default CountDown
