@@ -1,20 +1,24 @@
 import { useEffect, useRef, useState } from "react"
 
-const formatTime = (hours, minutes, seconds) =>
-  `${hours}:${minutes.toLocaleString("en-US", {
+const formatTime = (hours, minutes, seconds) => {
+  return `${hours.toLocaleString("en-US", {
+    minimumIntegerDigits: 2,
+    useGrouping: false,
+  })}:${minutes.toLocaleString("en-US", {
     minimumIntegerDigits: 2,
     useGrouping: false,
   })}:${seconds.toLocaleString("en-US", {
     minimumIntegerDigits: 2,
     useGrouping: false,
   })}`
+}
 
 const CountDown = ({ toDate }) => {
   const [dateDiff, setDateDiff] = useState({
-    days: null,
-    hours: null,
-    minutes: null,
-    seconds: null,
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
   })
 
   const interval = useRef()
@@ -46,6 +50,21 @@ const CountDown = ({ toDate }) => {
       clearInterval(interval.current)
     }
   })
+
+  if (new Date() > toDate) {
+    return <h1>KOM</h1>
+  }
+
+  if (dateDiff.days === 0) {
+    return (
+      <h1>
+        Nog maar{" "}
+        {formatTime(dateDiff.hours, dateDiff.minutes, dateDiff.seconds)} uur
+        totdat we open mogen!!!!!!!!
+      </h1>
+    )
+  }
+
   return (
     <h1>
       Nog {dateDiff.days} dagen en{" "}
