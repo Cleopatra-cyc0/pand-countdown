@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from "react"
 
-const formatTime = (hours, minutes, seconds) => `${hours}:${minutes}:${seconds}`
+const formatTime = (hours, minutes, seconds) =>
+  `${hours}:${minutes.toLocaleString("en-US", {
+    minimumIntegerDigits: 2,
+    useGrouping: false,
+  })}:${seconds.toLocaleString("en-US", {
+    minimumIntegerDigits: 2,
+    useGrouping: false,
+  })}`
 
 const CountDown = ({ toDate }) => {
   const [dateDiff, setDateDiff] = useState({
@@ -42,8 +49,8 @@ const CountDown = ({ toDate }) => {
   return (
     <h1>
       Nog {dateDiff.days} dagen en{" "}
-      {formatTime(dateDiff.hours, dateDiff.minutes, dateDiff.seconds)} totdat we
-      open mogen!
+      {formatTime(dateDiff.hours, dateDiff.minutes, dateDiff.seconds)} uur
+      totdat we open mogen!
     </h1>
   )
 }
