@@ -2,13 +2,16 @@ import "./App.css"
 import CountDown from "./components/CountDown"
 import date from "./.env.js"
 import logo from "./cleo-logo.svg"
+import MadeWithLove from "./components/MadeWith♡"
 
 function App() {
-  console.log(date)
   return (
     <div className="App">
-      <img src={logo} alt="Cleopatra" />
-      <CountDown toDate={date} />
+      <div className="main-content">
+        <img src={logo} alt="Cleopatra" />
+        <CountDown toDate={date} />
+      </div>
+      <MadeWithLove repo="Cleopatra-cyc0/pand-countdown" />
     </div>
   )
 }
